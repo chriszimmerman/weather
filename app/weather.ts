@@ -44,13 +44,14 @@ export const getWeather = async () => {
 };
 
 export const getLatLong = async (zipCode: string) => {
-  const url = `https://geocode.maps.co/search?postalcode=${zipCode}&country=United%2DStates&api_key=`;
+  const url = `https://geocode.maps.co/search?postalcode=${zipCode}&country=United%2DStates&api_key=${process.env.GEOCODING_API_KEY}`;
   const response = await fetch(url);
   const result = await response.json();
   const location = result[0];
   return {
     longitude: location.lon,
     latitude: location.lat,
+    displayName: location.display_name,
   };
 };
 
