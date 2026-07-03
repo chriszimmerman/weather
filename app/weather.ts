@@ -43,9 +43,19 @@ export const getWeather = async () => {
   };
 };
 
+export const getLatLong = async (zipCode: string) => {
+  const url = `https://geocode.maps.co/search?postalcode=${zipCode}&country=United%2DStates&api_key=`;
+  const response = await fetch(url);
+  const result = await response.json();
+  const location = result[0];
+  return {
+    longitude: location.lon,
+    latitude: location.lat,
+  };
+};
+
 const zipDaysWithTemps = (daily) => {
   const days = daily.time;
-  console.log(days);
   const highs = daily.temperature_2m_max
     .values()
     .toArray()
@@ -61,6 +71,5 @@ const zipDaysWithTemps = (daily) => {
     result.push({ date: days[index], high: highs[index], low: lows[index] });
   });
 
-  console.log(result);
   return result;
 };
