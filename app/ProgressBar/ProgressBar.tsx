@@ -1,5 +1,3 @@
-import "./ProgressBar.css";
-
 export default function ProgressBar({
   scaleMin,
   scaleMax,
@@ -18,7 +16,7 @@ export default function ProgressBar({
   const widthPct = Math.max(endPct - startPct, 0);
 
   return (
-    <div className="flex items-center gap-3 w-full">
+    <div className="flex items-center gap-3 w-1/4">
       {labelMin !== undefined && (
         <span className="text-sm tabular-nums w-10 text-right">{labelMin}</span>
       )}
