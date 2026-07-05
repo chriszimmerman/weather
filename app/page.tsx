@@ -36,30 +36,32 @@ export default function Home() {
   return (
     <>
       <div className="font-sans mx-2">
-        <h1 className="text-4xl">Seven Day Weather Forecast</h1>
-        <h2 className="text-2xl">{locationData.displayName}</h2>
+        <div className="flex justify-center">
+          <h1 className="text-4xl">Seven Day Weather Forecast</h1>
+        </div>
+        <div className="flex justify-center items-center text-center">
+          <h2 className="text-2xl">{locationData.displayName}</h2>
+        </div>
         <div className="flex flex-col gap-4">
-          <div className="flex justify-between">
-            <input
-              className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="zipCode"
-              type="text"
-              pattern="[0-9]{5}"
-              placeholder="Enter a five digit zip code"
-              value={zipCode}
-              onChange={(e) => {
-                console.log("zipCode", e.target.value);
-                setZipCode(e.target.value);
-              }}
-            />
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-              onClick={() => updateWeather()}
-            >
-              Fetch weather
-            </button>
-          </div>
+          <input
+            className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="zipCode"
+            type="text"
+            pattern="[0-9]{5}"
+            placeholder="Enter a five digit zip code"
+            value={zipCode}
+            onChange={(e) => {
+              console.log("zipCode", e.target.value);
+              setZipCode(e.target.value);
+            }}
+          />
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={() => updateWeather()}
+          >
+            Fetch weather
+          </button>
 
           {weatherData.sevenDay.map((item, index) => {
             return (
@@ -79,7 +81,7 @@ export default function Home() {
             );
           })}
         </div>
-        <div className="mt-2 items-center">
+        <div className="flex mt-2 justify-center">
           <a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
         </div>
       </div>
