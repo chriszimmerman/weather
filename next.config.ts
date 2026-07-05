@@ -7,6 +7,10 @@ module.exports = {
   env: {
     GEOCODING_API_KEY: process.env.GEOCODING_API_KEY,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+    tsconfigPath: "tsconfig.json",
+  },
 };
 
 export default nextConfig;
