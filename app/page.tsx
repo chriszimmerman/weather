@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <div className="font-sans mx-2">
-        <div className="flex justify-center mb-1">
+        <div className="flex justify-center items-center text-center mb-1">
           <h1 className="text-4xl">Seven Day Weather Forecast</h1>
         </div>
         {locationData && (
