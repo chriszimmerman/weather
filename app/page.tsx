@@ -35,19 +35,17 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="text-4xl">
-        Seven Day Weather Forecast for {locationData.displayName}
-      </h1>
-      <div className="font-sans">
+      <div className="font-sans mx-2">
+        <h1 className="text-4xl">Seven Day Weather Forecast</h1>
+        <h2 className="text-2xl">{locationData.displayName}</h2>
         <div className="flex flex-col gap-4">
-          <div>
-            <label>ZIP Code</label>
+          <div className="flex justify-between">
             <input
-              className="w-1/3 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="zipCode"
               type="text"
               pattern="[0-9]{5}"
-              placeholder="19083"
+              placeholder="Enter a five digit zip code"
               value={zipCode}
               onChange={(e) => {
                 console.log("zipCode", e.target.value);
@@ -81,8 +79,10 @@ export default function Home() {
             );
           })}
         </div>
+        <div className="mt-2 items-center">
+          <a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
+        </div>
       </div>
-      <a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a>
     </>
   );
 }

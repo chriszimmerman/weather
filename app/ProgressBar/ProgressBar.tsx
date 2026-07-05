@@ -16,7 +16,7 @@ export default function ProgressBar({
   const widthPct = Math.max(endPct - startPct, 0);
 
   return (
-    <div className="flex items-center gap-3 w-1/4">
+    <div className="flex items-center gap-3 w-full">
       {labelMin !== undefined && (
         <span className="text-sm tabular-nums w-10 text-right">{labelMin}</span>
       )}
@@ -29,7 +29,7 @@ export default function ProgressBar({
       </div>
 
       {labelMax !== undefined && (
-        <span className="text-sm tabular-nums w-10 font-medium">
+        <span className="text-sm tabular-nums font-medium mr-1">
           {labelMax}
         </span>
       )}
