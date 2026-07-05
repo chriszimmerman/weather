@@ -20,8 +20,6 @@ export default function SevenDay({ weatherData }) {
               scaleMax={maxTemp}
               min={item.low}
               max={item.high}
-              labelMin={item.low}
-              labelMax={item.high}
             />
           </div>
         );
