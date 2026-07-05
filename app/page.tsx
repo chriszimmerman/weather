@@ -26,11 +26,11 @@ export default function Home() {
   return (
     <>
       <div className="font-sans mx-2">
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-1">
           <h1 className="text-4xl">Seven Day Weather Forecast</h1>
         </div>
         {locationData && (
-          <div className="flex justify-center items-center text-center">
+          <div className="flex justify-center items-center text-center mb-1">
             <h2 className="text-2xl">{locationData.displayName}</h2>
           </div>
         )}
