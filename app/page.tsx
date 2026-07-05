@@ -5,12 +5,22 @@ import { getLatLong, getWeather } from "@/app/weather";
 import SevenDay from "@/app/SevenDay/SevenDay";
 
 export default function Home() {
-  const [zipCode, setZipCode] = useState("19083");
+  const [zipCode, setZipCode] = useState("");
   const [locationData, setLocationData] = useState(null);
   const [weatherData, setWeatherData] = useState({
     daily: [],
     sevenDay: [],
   });
+
+  const enabledZipClasses =
+    "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline";
+  const disabledZipClasses =
+    "bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline";
+
+  const validateZip = (zip: string) => {
+    const zipCodeRegex = /^\d{5}$/;
+    return zipCodeRegex.test(zip);
+  };
 
   const updateWeather = async () => {
     const updatedLocationData = await getLatLong(zipCode);
@@ -48,8 +58,11 @@ export default function Home() {
             }}
           />
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className={
+              validateZip(zipCode) ? enabledZipClasses : disabledZipClasses
+            }
             type="button"
+            disabled={!validateZip(zipCode)}
             onClick={() => updateWeather()}
           >
             Fetch weather
