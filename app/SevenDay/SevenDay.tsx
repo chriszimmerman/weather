@@ -14,7 +14,7 @@ export default function SevenDay({ weatherData }) {
           <div key={index} className="flex">
             <span
               style={{ whiteSpace: "nowrap", width: "50px" }}
-            >{`${daysOfWeek[item.date.getUTCDay()]} ${item.date.getUTCDate()}`}</span>
+            >{`${daysOfWeek[new Date(item.date).getUTCDay()]} ${new Date(item.date).getUTCDate()}`}</span>
             <ProgressBar
               scaleMin={minTemp}
               scaleMax={maxTemp}

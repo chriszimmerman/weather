@@ -1,6 +1,21 @@
+import "server-only";
 import { fetchWeatherApi } from "openmeteo";
 
-export const getWeather = async (latitude, longitude) => {
+export default async (req, res) => {
+  const query = req.query;
+  const { zipCode } = query;
+  const updatedLocationData = await getLatLong(zipCode);
+  const newWeatherData = await getWeather(
+    updatedLocationData.latitude,
+    updatedLocationData.longitude,
+  );
+  return res.status(200).json({
+    locationData: updatedLocationData,
+    weatherData: newWeatherData,
+  });
+};
+
+const getWeather = async (latitude, longitude) => {
   const params = {
     latitude: Number(latitude),
     longitude: Number(longitude),
@@ -10,7 +25,6 @@ export const getWeather = async (latitude, longitude) => {
   const url = "https://api.open-meteo.com/v1/forecast";
   let response;
   return fetchWeatherApi(url, params).then((responses) => {
-    console.log("fetch weather api", responses);
     response = responses[0];
     const utcOffsetSeconds = response.utcOffsetSeconds();
 
@@ -43,7 +57,7 @@ export const getWeather = async (latitude, longitude) => {
   });
 };
 
-export const getLatLong = async (zipCode: string) => {
+const getLatLong = async (zipCode: string) => {
   const url = `https://geocode.maps.co/search?postalcode=${zipCode}&country=United%2DStates&api_key=${process.env.GEOCODING_API_KEY}`;
   const response = await fetch(url);
   const result = await response.json();
