@@ -1,4 +1,3 @@
-import "server-only";
 import { fetchWeatherApi } from "openmeteo";
 
 export default async (req, res) => {
